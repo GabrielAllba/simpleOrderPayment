@@ -1,4 +1,4 @@
-import { checkItem } from "./library.mjs";
+import { checkItem , checkBalance} from "./library.mjs";
 
 const order = {
     items: [
@@ -6,11 +6,13 @@ const order = {
         ['bags',20],
         ['pants',20]
     ],
-    giftcardBalances: 10000000
+    giftcardBalances: 10000
 }
 
-checkItem(order).then((resolvedValue) => {
-    console.log(resolvedValue);
-}).catch((rejectedValue) => {
-    console.log(rejectedValue)
+checkItem(order)
+    .then((resolvedValue) => {
+        return checkBalance(resolvedValue)
+    })
+    .catch((rejectedValue) => {
+        console.log(rejectedValue)
 })
