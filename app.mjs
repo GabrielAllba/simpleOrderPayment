@@ -1,4 +1,4 @@
-import { checkItem , checkBalance} from "./library.mjs";
+import { checkItem , checkBalance, shipOrder} from "./library.mjs";
 
 const order = {
     items: [
@@ -12,6 +12,9 @@ const order = {
 checkItem(order)
     .then((resolvedValue) => {
         return checkBalance(resolvedValue)
+    })
+    .then((resolvedValue) => {
+        return shipOrder(resolvedValue)
     })
     .catch((rejectedValue) => {
         console.log(rejectedValue)
