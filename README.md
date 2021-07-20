@@ -9,5 +9,5 @@ This is a simple implementation of using Promise object based on CodeCademy Java
 ## Usage
 
 A Promise is an object representing the eventual completion or failure of an asynchronous operation. This code will representation an output like this:
-<br>
-![Output](./output.gif)
+<br><br>
+![Alt text](./output.gif)
