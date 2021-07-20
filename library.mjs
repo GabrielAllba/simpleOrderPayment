@@ -1,14 +1,14 @@
 const store = {
     sunglasses: {
-        amount: 0,
+        amount: 100,
         cost: 10
     },
     pants: {
-        amount: 0,
+        amount: 1000,
         cost:20
     },
     bags: {
-        amount: 0,
+        amount: 100,
         cost: 25
     }
 }
@@ -39,9 +39,31 @@ const checkItem = (order) => {
                 for(let i = 0; i < itemName.length; i++){
                     console.log("Your order can't be completed because " + itemName[i] + " are " + amountList[i] + " in our storage.")
                 }
+                reject("Couldn't processed to the payment check.")
             }
-        },3000)
+        },2000)
         console.log('Your order are being checked in our storage...please be patient..')
     })
 }
-export {checkItem};
+
+const checkBalance = (responseArray) => {
+    const order = responseArray[0]
+    const totalPayment = responseArray[1]
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            let hasEnoughMoney = order.giftcardBalances >= totalPayment;
+            if(hasEnoughMoney){
+                console.log("Payment processed with giftcard. Generating shipping label...")
+                let number = generateTrackingNum()
+                resolve([order,number])
+            }
+            else{
+                reject("Can't processed order: giftcard balance was insufficient. ")
+            }
+        },3000)
+    })
+}
+const generateTrackingNum = () => {
+    return Math.floor(Math.random() * 10000000)
+}
+export {checkItem,checkBalance};
