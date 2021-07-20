@@ -63,6 +63,13 @@ const checkBalance = (responseArray) => {
         },3000)
     })
 }
+const shipOrder = (responseArray) => {
+    const order = responseArray[0]
+    const trackingNum = responseArray[1]
+    setTimeout(() => {
+        resolve("Your order has been shipped. Your tracking number is " + trackingNum)   
+    }, 4000);
+}
 const generateTrackingNum = () => {
     return Math.floor(Math.random() * 10000000)
 }
