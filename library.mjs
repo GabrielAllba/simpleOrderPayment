@@ -73,4 +73,4 @@ const shipOrder = (responseArray) => {
 const generateTrackingNum = () => {
     return Math.floor(Math.random() * 10000000)
 }
-export {checkItem,checkBalance};
+export {checkItem,checkBalance,shipOrder};
