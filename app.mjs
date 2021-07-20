@@ -16,6 +16,9 @@ checkItem(order)
     .then((resolvedValue) => {
         return shipOrder(resolvedValue)
     })
+    .then((successMessage) => {
+        console.log(successMessage)
+    })
     .catch((rejectedValue) => {
         console.log(rejectedValue)
 })
